@@ -1,0 +1,23 @@
+{
+  "home": "ホーム",
+  "events": "イベント",
+  "cleaning": "清掃サービス",
+  "cleaning_short": "清掃",
+  "login": "ログイン",
+  "logout": "ログアウト",
+  "register": "登録",
+  "welcome": "ようこそ",
+  "mission_heading": "私たちの使命",
+  "loading": "読み込み中...",
+  "signup": "参加登録",
+  "contact_us": "お問い合わせ",
+  "name": "名前",
+  "email": "メールアドレス",
+  "message": "メッセージ",
+  "submit": "送信",
+  "username": "ユーザー名",
+  "password": "パスワード",
+  "confirm_password": "パスワード（確認）",
+  "already_have_account": "すでにアカウントをお持ちですか？",
+  "no_account": "アカウントをお持ちでないですか？"
+}

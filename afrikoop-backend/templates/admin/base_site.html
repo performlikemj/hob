@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'core/admin.css' %}?v=2">
+{% endblock %}
+
+{% block branding %}
+  <div class="bijou-admin-brand">
+    <img src="{% static 'core/logo-admin.svg' %}" alt="House of Bijou" class="bijou-admin-brand__logo">
+    <h1 class="bijou-admin-brand__title">
+      <a href="{% url 'admin:index' %}">House of Bijou — Admin</a>
+    </h1>
+  </div>
+{% endblock %}
+
+{% block nav-global %}
+  <div class="bijou-admin-accent"></div>
+  {{ block.super }}
+{% endblock %}

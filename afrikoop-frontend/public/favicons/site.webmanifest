@@ -1,0 +1,14 @@
+{
+  "name": "House of Bijou",
+  "short_name": "Bijou",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e11d48",
+  "icons": [
+    { "src": "/favicons/icon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicons/icon-256x256.png", "sizes": "256x256", "type": "image/png" },
+    { "src": "/favicons/icon-512x512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/favicons/apple-touch-icon-180x180.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ]
+}

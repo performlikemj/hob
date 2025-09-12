@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="120" viewBox="0 0 420 120" fill="none">
+  <!-- Simple, original line-art hands framing the wordmark -->
+  <g stroke="#e11d48" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left hand (stylized) -->
+    <path d="M40 70 C30 60, 28 50, 34 42 C38 37, 45 37, 52 40"/>
+    <path d="M52 40 C60 44, 64 52, 64 60"/>
+    <path d="M56 44 C58 46, 60 50, 60 54"/>
+    <path d="M50 44 C52 46, 54 49, 54 53"/>
+    <path d="M45 45 C47 47, 49 50, 49 54"/>
+
+    <!-- Right hand (stylized, mirrored) -->
+    <path d="M380 70 C390 60, 392 50, 386 42 C382 37, 375 37, 368 40"/>
+    <path d="M368 40 C360 44, 356 52, 356 60"/>
+    <path d="M364 44 C362 46, 360 50, 360 54"/>
+    <path d="M370 44 C368 46, 366 49, 366 53"/>
+    <path d="M375 45 C373 47, 371 50, 371 54"/>
+  </g>
+
+  <!-- Wordmark: AFRIKASIA (use CSS font in page; this SVG provides structure) -->
+  <g>
+    <rect x="80" y="30" width="260" height="60" rx="8" fill="white" fill-opacity="0.85"/>
+    <text x="210" y="72" text-anchor="middle" font-family="'Bodoni Moda', serif" font-size="36" fill="#111827" letter-spacing="1.5">
+      HOUSE OF BIJOU
+    </text>
+  </g>
+</svg>

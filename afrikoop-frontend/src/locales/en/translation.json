@@ -1,0 +1,23 @@
+{
+  "home": "Home",
+  "events": "Events",
+  "cleaning": "Cleaning Service",
+  "cleaning_short": "Cleaning",
+  "login": "Login",
+  "logout": "Logout",
+  "register": "Register",
+  "welcome": "Welcome",
+  "mission_heading": "Our Mission",
+  "loading": "Loading...",
+  "signup": "Sign Up",
+  "contact_us": "Contact Us",
+  "name": "Name",
+  "email": "Email",
+  "message": "Message",
+  "submit": "Submit",
+  "username": "Username",
+  "password": "Password",
+  "confirm_password": "Confirm Password",
+  "already_have_account": "Already have an account?",
+  "no_account": "Don't have an account?"
+}

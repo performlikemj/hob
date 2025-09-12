@@ -1,0 +1,88 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.pyo
+*.pyd
+
+# Environments
+.env
+.env.*
+.venv/
+venv/
+ENV/
+env/
+
+# Tooling caches
+.mypy_cache/
+.pytest_cache/
+.pytype/
+.tox/
+.nox/
+.coverage*
+htmlcov/
+.cache/
+.hypothesis/
+.pyre/
+
+# Packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdists/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Logs
+logs/
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Django
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Node / Vite (frontend)
+node_modules/
+*.tsbuildinfo
+.vite/
+afrikoop-frontend/node_modules/
+afrikoop-frontend/dist/
+afrikoop-frontend/.vite/
+afrikoop-frontend/.eslintcache
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS / Misc
+Thumbs.db
+.codex/
+

@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+body {
+  font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+  min-height: 100vh;
+}
+
+@layer base {
+  body {
+    @apply bg-paper text-ink dark:bg-[#0b0b0e] dark:text-white/90;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-ink dark:text-white;
+  }
+  /* Readable body copy in dark */
+  p { @apply text-ink/80 dark:text-white/80; }
+  /* Form elements */
+  input, textarea {
+    @apply bg-white dark:bg-[#0e0f12] border border-ink/20 dark:border-white/10 text-ink dark:text-white placeholder:text-ink/50 dark:placeholder:text-white/40;
+  }
+  label { @apply text-ink dark:text-white; }
+}
+
+/* Small utility aliases for consistency */
+@layer components {
+  .card { @apply bg-white dark:bg-[#121316] border border-ink/10 dark:border-white/10 rounded-lg; }
+  .muted { @apply text-ink/80 dark:text-white/70; }
+  .btn { @apply inline-flex items-center justify-center rounded px-4 py-2; }
+  .btn-primary { @apply btn bg-primary text-white hover:opacity-90; }
+  .btn-ghost { @apply btn border border-ink/10 dark:border-white/10 text-ink dark:text-white hover:bg-ink/5 dark:hover:bg-white/10; }
+  .surface { @apply bg-white dark:bg-[#111216]; }
+}

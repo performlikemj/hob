@@ -1,0 +1,104 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static core_admin %}
+
+{% block content %}
+<div class="bijou-dashboard">
+  <div class="kpi-row">
+    <div class="kpi module">
+      <div class="kpi__label">Upcoming</div>
+      <div class="kpi__value">{% upcoming_events_count as upc %}{{ upc }}</div>
+    </div>
+    <div class="kpi module">
+      <div class="kpi__label">All Events</div>
+      <div class="kpi__value">{% total_events as te %}{{ te }}</div>
+    </div>
+    <div class="kpi module">
+      <div class="kpi__label">Registrations</div>
+      <div class="kpi__value">{% registrations_count as rc %}{{ rc }}</div>
+    </div>
+    <div class="kpi module">
+      <div class="kpi__label">Messages (30d)</div>
+      <div class="kpi__value">{% contact_count 30 as cc %}{{ cc }}</div>
+    </div>
+  </div>
+
+  <div class="main-row">
+    <div class="panel module">
+      <div class="panel__header">
+        <h3>Next Events</h3>
+        <div class="panel__tools">
+          <a class="btn btn-sm btn-primary" href="{% url 'admin:core_event_add' %}">Add</a>
+          <a class="btn btn-sm btn-outline-info" href="{% url 'admin:core_event_changelist' %}">View all</a>
+        </div>
+      </div>
+      <table class="table table-sm">
+        <thead><tr><th>When</th><th>Title</th><th>Location</th></tr></thead>
+        <tbody>
+        {% upcoming_events 5 as evs %}
+        {% if evs %}
+          {% for e in evs %}
+          <tr>
+            <td>{{ e.start_datetime|date:"M d, H:i" }}</td>
+            <td><a href="{% url 'admin:core_event_change' e.id %}">{{ e.title_en }}</a></td>
+            <td>{{ e.location }}</td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          <tr><td colspan="3" class="muted">No upcoming events</td></tr>
+        {% endif %}
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="side">
+      <div class="panel module">
+        <h3>Quick Links</h3>
+        <div class="quick-links">
+          <a class="btn btn-sm btn-outline-info" href="{% url 'admin:core_eventspagesettings_changelist' %}">Events Page Settings</a>
+          <a class="btn btn-sm btn-outline-info" href="{% url 'admin:core_cleaningservicepage_changelist' %}">Cleaning Page</a>
+          <a class="btn btn-sm btn-outline-info" href="{% url 'admin:core_missionpage_changelist' %}">Mission Page</a>
+          <a class="btn btn-sm btn-outline-info" href="{% url 'admin:core_volunteergroup_changelist' %}">Volunteer Groups</a>
+          <a class="btn btn-sm btn-outline-info" href="{% url 'admin:core_sitetextsettings_changelist' %}">Site Text</a>
+        </div>
+      </div>
+      <div class="panel module">
+        <h3>Recent Messages</h3>
+        <ul class="dash-list">
+          {% recent_messages 5 as msgs %}
+          {% if msgs %}
+            {% for m in msgs %}
+              <li><a href="{% url 'admin:core_contactmessage_change' m.id %}">{{ m.name }}</a> — {{ m.sent_at|date:"M d" }}</li>
+            {% endfor %}
+          {% else %}
+            <li class="muted">No recent messages</li>
+          {% endif %}
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <div class="full-list-link">
+    <a class="btn btn-sm btn-outline-secondary" href="{% url 'admin:index' %}?show=all">Open full app list</a>
+  </div>
+
+  <div id="guide" class="panel module" style="margin-top:1rem; padding:12px;">
+    <h3>How to Update the Site (Quick Guide)</h3>
+    <ol class="guide-list">
+      <li><strong>Homepage (mission)</strong>: Go to <em>Mission Pages</em>. Edit Title/Body (EN/JA) and upload a wide hero image. Save.</li>
+      <li><strong>Cleaning page</strong>: Open <em>Cleaning Service Pages</em>.
+        <ul>
+          <li>Fill Title/Description (EN/JA).</li>
+          <li>Upload a hero image (wide).</li>
+          <li>Under <em>Cleaning Features</em>, add bullet points (choose a dot color).</li>
+          <li>Under <em>Cleaning Gallery Images</em>, add up to 3 photos that show your work.</li>
+        </ul>
+      </li>
+      <li><strong>Events page header</strong>: Open <em>Events Page Settings</em>. Set Title/Sub‑title (EN/JA) and upload a hero image.</li>
+      <li><strong>Events</strong>: Open <em>Events</em>. Click <em>Add event</em>, fill title/description, date/time, location, capacity. Use <em>Event Images</em> for photos. Save.</li>
+      <li><strong>Navbar and button text</strong>: Open <em>Site Text Settings</em>. Edit labels in English/Japanese (e.g., Home, Events, Cleaning, Login, Browse events). Save.</li>
+      <li><strong>Volunteer groups</strong>: Open <em>Volunteer Tiers</em>. Add tiers (e.g., Core Team, Hosts) and assign members.</li>
+    </ol>
+    <p class="muted" style="margin-top:.5rem;">Image tips: use wide images for heroes (≈1600×600), JPG/PNG under 2–3MB. After saving, refresh the public site to see changes.</p>
+  </div>
+</div>
+{% endblock %}

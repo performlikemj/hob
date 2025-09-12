@@ -1,0 +1,42 @@
+/* House of Bijou admin branding */
+.bijou-admin-brand {
+  display: flex; align-items: center; gap: .5rem;
+}
+.bijou-admin-brand__logo { height: 28px; width: auto; border-radius: 6px; padding: 2px; background: linear-gradient(135deg, #e11d48, #eab308, #0f766e); }
+.bijou-admin-brand__title { font-weight: 700; }
+
+/* Accent line under the header */
+:root { --bijou-admin-border: #eab30833; }
+.bijou-admin-accent { height: 3px; background: linear-gradient(90deg,#e11d48,#eab308,#0f766e); }
+
+/* Tables and cards slightly softened */
+.module, .card, .inline-group { border-radius: 8px !important; }
+
+/* Make inlines a bit more readable */
+.inline-group .inline-related { padding-top: .25rem; }
+
+/* Remove emoji overrides so Jazzmin's FontAwesome icons are consistent */
+
+/* Dashboard layout */
+.bijou-dashboard { margin-bottom: 1rem; }
+.bijou-dashboard .kpi-row { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: .75rem; }
+.bijou-dashboard .kpi { padding: 10px !important; }
+.bijou-dashboard .kpi__label { font-size: 12px; opacity: .8; margin-bottom: 2px; }
+.bijou-dashboard .kpi__value { font-size: 22px; font-weight: 700; }
+
+.bijou-dashboard .main-row { display:grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-top: .75rem; }
+.bijou-dashboard .panel { padding: 12px !important; }
+.bijou-dashboard .panel__header { display:flex; align-items:center; justify-content:space-between; margin-bottom: .5rem; }
+.bijou-dashboard .panel__tools .btn { margin-left: .25rem; }
+.bijou-dashboard .quick-links { display:grid; grid-template-columns: 1fr; gap: .4rem; }
+.bijou-dashboard .dash-list { margin: 0; padding-left: 18px; }
+.bijou-dashboard .full-list-link { margin-top: 1rem; }
+.bijou-dashboard .guide-list { margin: 0.25rem 0 0 1rem; }
+.bijou-dashboard .guide-list li { margin-bottom: .25rem; }
+.bijou-dashboard .guide-list ul { margin: .25rem 0 .25rem 1.25rem; }
+
+@media (max-width: 1024px) {
+  .bijou-dashboard .kpi-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .bijou-dashboard .main-row { grid-template-columns: 1fr; }
+}
+.brand-image { height: 24px !important; width: auto; border-radius: 6px; display: inline-block; padding: 0; background: transparent; object-fit: contain; }
