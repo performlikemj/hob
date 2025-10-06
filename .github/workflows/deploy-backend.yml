@@ -58,11 +58,14 @@ jobs:
             --name ${{ env.AZURE_WEBAPP_NAME }} \
             --resource-group rg-afrikoop-prod \
             --settings \
+              DJANGO_SETTINGS_MODULE=afrikoop.settings_prod \
               DJANGO_SECRET_KEY="${{ secrets.DJANGO_SECRET_KEY }}" \
               DJANGO_ALLOWED_HOSTS="${{ secrets.BACKEND_HOSTNAME }}" \
               FRONTEND_URL="${{ secrets.FRONTEND_URL }}" \
               ADMIN_EMAIL="${{ secrets.ADMIN_EMAIL }}" \
-              ADMIN_PASSWORD="${{ secrets.ADMIN_PASSWORD }}"
+              ADMIN_PASSWORD="${{ secrets.ADMIN_PASSWORD }}" \
+              PYTHONUNBUFFERED=1 \
+              SCM_DO_BUILD_DURING_DEPLOYMENT=true
       
       - name: Restart App Service
         run: |
