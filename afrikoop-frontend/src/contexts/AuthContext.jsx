@@ -15,8 +15,9 @@ export function AuthProvider({ children }) {
   // where the backend is hosted. During development you might run
   // frontend at port 3000 and backend at 8000, so update this string
   // accordingly.
+  // In production, this should be set via environment variable (e.g., VITE_API_URL)
   const api = axios.create({
-    baseURL: 'http://localhost:8000/api/',
+    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000/api/',
   });
 
   // Attach token to every request if present

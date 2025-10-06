@@ -86,3 +86,19 @@ afrikoop-frontend/.eslintcache
 Thumbs.db
 .codex/
 
+# Azure deployment
+*.zip
+deploy.zip
+.azure/
+infra/.terraform/
+infra/terraform.tfstate*
+infra/*.tfvars
+AZURE_DEPLOYMENT.md
+QUICKSTART.md
+deploy.sh
+
+# Secrets (double-check these are ignored!)
+*.pem
+*.key
+*.cert
+secrets.json

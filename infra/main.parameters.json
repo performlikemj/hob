@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environment": {
+      "value": "prod"
+    },
+    "location": {
+      "value": "eastus"
+    },
+    "djangoSecretKey": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/63ceeeac-fe3f-4bcb-b6d2-b7aa7fd6bf52/resourceGroups/rg-afrikoop-prod/providers/Microsoft.KeyVault/vaults/kv-afrikoop-prod"
+        },
+        "secretName": "django-secret-key"
+      }
+    },
+    "adminEmail": {
+      "value": "admin@example.com"
+    },
+    "adminPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/63ceeeac-fe3f-4bcb-b6d2-b7aa7fd6bf52/resourceGroups/rg-afrikoop-prod/providers/Microsoft.KeyVault/vaults/kv-afrikoop-prod"
+        },
+        "secretName": "admin-password"
+      }
+    },
+    "enablePostgreSQL": {
+      "value": false
+    },
+    "backendCustomDomain": {
+      "value": ""
+    },
+    "frontendCustomDomain": {
+      "value": ""
+    }
+  }
+}
+

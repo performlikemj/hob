@@ -1,0 +1,77 @@
+name: Deploy Django Backend to Azure App Service
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'afrikoop-backend/**'
+      - '.github/workflows/deploy-backend.yml'
+  workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: app-afrikoop-backend-prod
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          cd afrikoop-backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run Django checks
+        run: |
+          cd afrikoop-backend
+          python manage.py check --deploy --settings=afrikoop.settings_prod || true
+        env:
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+          DJANGO_ALLOWED_HOSTS: ${{ secrets.BACKEND_HOSTNAME }}
+          FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
+      
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          package: ./afrikoop-backend
+      
+      - name: Set App Service environment variables
+        run: |
+          az webapp config appsettings set \
+            --name ${{ env.AZURE_WEBAPP_NAME }} \
+            --resource-group rg-afrikoop-prod \
+            --settings \
+              DJANGO_SECRET_KEY="${{ secrets.DJANGO_SECRET_KEY }}" \
+              DJANGO_ALLOWED_HOSTS="${{ secrets.BACKEND_HOSTNAME }}" \
+              FRONTEND_URL="${{ secrets.FRONTEND_URL }}" \
+              ADMIN_EMAIL="${{ secrets.ADMIN_EMAIL }}" \
+              ADMIN_PASSWORD="${{ secrets.ADMIN_PASSWORD }}"
+      
+      - name: Restart App Service
+        run: |
+          az webapp restart \
+            --name ${{ env.AZURE_WEBAPP_NAME }} \
+            --resource-group rg-afrikoop-prod
+      
+      - name: Logout from Azure
+        run: |
+          az logout
+        if: always()
+
